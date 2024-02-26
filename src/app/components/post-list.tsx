@@ -17,7 +17,7 @@ export function PostLists ({ posts }: { posts: Post[] | null }) {
             name: userFullName,
             avatar_url: avatarUrl
           } = user
-          return (<PostCard key={id} userFullName={userFullName} userName={userName} avatarUrl={avatarUrl} content={content}/>)
+          return (<PostCard key={id} postId={id} userFullName={userFullName} userName={userName} avatarUrl={avatarUrl} content={content}/>)
         })}
     </>
   )

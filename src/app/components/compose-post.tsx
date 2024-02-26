@@ -20,7 +20,7 @@ export function ComposePost ({
 
   return (
         <form action={addPost} className='flex flex-row p-3 border-b border-white/20'>
-            <img className= 'rounded-full w-10 h-10 mr-2'/>
+            <img src={userAvatarUrl} className= 'rounded-full w-10 h-10 mr-2'/>
             <div className='flex flex-1 flex-col gap-y-4'>
 
             <textarea
