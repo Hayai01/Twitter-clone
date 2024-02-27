@@ -2,9 +2,9 @@
 import { useState } from 'react'
 import { Card, CardHeader, CardBody, CardFooter, Avatar } from '@nextui-org/react'
 import Link from 'next/link'
-import { IconHeart, IconMessageCircle2, IconRepeat, IconTrash, IconEdit } from '@tabler/icons-react'
-import { deletePost } from './delete-post'
-import { editPost } from './edit-posts'
+import { IconHeart, IconMessageCircle2, IconRepeat, IconTrash, IconCheck, IconEdit } from '@tabler/icons-react'
+import { deletePost } from '../scripts/delete-post'
+import { editPost } from '../scripts/edit-posts'
 
 export default function PostCard ({
   postId,
@@ -67,7 +67,7 @@ export default function PostCard ({
         </button>
         {isEditing && (
           <button onClick={async () => { setIsEditing(false); await editPost(postId, newContent); setNewContent(newContent) }}>
-            Guardar
+            <IconCheck className='h-4 w-4'/>
           </button>
         )}
       </CardFooter>
