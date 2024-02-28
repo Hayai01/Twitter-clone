@@ -1,12 +1,12 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import { AuthButtonServer } from './components/auth-button-server'
+import { AuthButtonServer } from '../components/auth-button-server'
 import { redirect } from 'next/navigation'
-import { PostLists } from './components/post-list'
-import { type Database } from './types/database'
-import { ComposePost } from './components/compose-post'
-import Sidebar from './components/sidebar'
-import { SearchBar } from './components/searchbar'
+import { PostLists } from '../components/post-list'
+import { type Database } from '../types/database'
+import { ComposePost } from '../components/compose-post'
+import Sidebar from '../components/sidebar'
+import { SearchBar } from '../components/searchbar'
 
 export default async function Home () {
   const supabase = createServerComponentClient<Database>({ cookies })

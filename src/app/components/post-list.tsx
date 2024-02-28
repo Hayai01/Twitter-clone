@@ -3,22 +3,33 @@ import { type Post } from '@/app/types/posts'
 
 export function PostLists ({ posts }: { posts: Post[] | null }) {
   return (
-        <>
-        {
-        posts?.map(post => {
-          const {
-            id,
-            user,
-            content
-          } = post
+    <>
+      {posts?.map(post => {
+        const {
+          id,
+          user,
+          content,
+          tittle // Incluir el título del post
+        } = post
 
-          const {
-            user_name: userName,
-            name: userFullName,
-            avatar_url: avatarUrl
-          } = user
-          return (<PostCard key={id} postId={id} userFullName={userFullName} userName={userName} avatarUrl={avatarUrl} content={content}/>)
-        })}
+        const {
+          user_name: userName,
+          name: userFullName,
+          avatar_url: avatarUrl
+        } = user
+
+        return (
+          <PostCard
+            key={id}
+            postId={id}
+            userFullName={userFullName}
+            userName={userName}
+            avatarUrl={avatarUrl}
+            content={content}
+            tittle={tittle} // Pasar el título como prop al PostCard
+          />
+        )
+      })}
     </>
   )
 }

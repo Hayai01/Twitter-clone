@@ -1,29 +1,33 @@
 'use client'
-
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { SearchResults } from './search-results'
+import { searchPosts } from './search-service'
+import { type Post } from '@/app/types/posts'
 
 export function SearchBar () {
   const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState<Post[]>([])
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value)
-  }
+  // Función para realizar la búsqueda en tiempo real
+  const handleSearchChange = async (value: string) => {
+    setSearchQuery(value)
+    const results = await searchPosts(value)
 
-  const handleSearchSubmit = () => {
-    // Aquí puedes implementar la lógica para manejar la búsqueda
-    console.log('Búsqueda realizada:', searchQuery)
+    setSearchResults(results)
   }
 
   return (
-    <div className="flex items-center border border-gray-300 rounded-md p-2">
-      <input
-        type="text"
-        placeholder="Buscar..."
-        value={searchQuery}
-        onChange={handleSearchChange}
-        className="flex-grow px-2 py-1 outline-none bg-transparent"
-      />
-      <button onClick={handleSearchSubmit} className="ml-2 px-4 py-1 bg-blue-500 text-white rounded-md">Buscar</button>
+    <div>
+      <div className="flex items-center border border-gray-300 rounded-md p-2">
+        <input
+          type="text"
+          placeholder="Buscar..."
+          value={searchQuery}
+          onChange={async (e) => { handleSearchChange(e.target.value) }} // Escuchar el evento onChange para actualizar la búsqueda en tiempo real
+          className="flex-grow px-2 py-1 outline-none bg-transparent"
+        />
+      </div>
+      {searchQuery.trim() !== '' && <SearchResults results={searchResults} />}
     </div>
   )
 }

@@ -10,11 +10,12 @@ export function ComposePost ({
   const addPost = async (formData: FormData) => {
     'use server'
     const content = formData.get('content')
-    if (content === null) return
+    const tittle = formData.get('tittle')
+    if (content === '' || tittle === '') return
     const supabase = createServerComponentClient({ cookies })
     const { data: { user } } = await supabase.auth.getUser()
     if (user === null) return
-    await supabase.from('posts').insert({ content, user_id: user.id })
+    await supabase.from('posts').insert({ content, tittle, user_id: user.id })
     revalidatePath('/')
   }
 
@@ -22,7 +23,12 @@ export function ComposePost ({
         <form action={addPost} className='flex flex-row p-3 border-b border-white/20'>
             <img src={userAvatarUrl} className= 'rounded-full w-10 h-10 mr-2'/>
             <div className='flex flex-1 flex-col gap-y-4'>
-
+            <textarea
+          name="tittle"
+          rows={2}
+          placeholder='title'
+          className='w-full text-sm bg-black placeholder-gray-500 p-4'
+        ></textarea>
             <textarea
             name="content"
             rows={4}
