@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { IconHeart, IconMessageCircle2, IconRepeat, IconTrash, IconCheck, IconEdit } from '@tabler/icons-react'
 import { deletePost } from '../scripts/delete-post'
 import { editPost } from '../scripts/edit-posts'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 export default function PostCard ({
   postId,
@@ -50,7 +52,9 @@ export default function PostCard ({
         : (
         <>
           <h3 className="text-lg font-semibold mb-2">{tittle}</h3> {/* Mostrar el título con más espacio */}
-          <p>{newContent}</p>
+          <SyntaxHighlighter language="typescript" style={atomDark}>
+          {newContent}
+          </SyntaxHighlighter>
         </>
           )}
     </CardBody>
