@@ -14,14 +14,14 @@ export default function PostCard ({
   userName,
   avatarUrl,
   content,
-  tittle
+  title
 }: {
   postId: string
   userFullName: string
   userName: string
   avatarUrl: string
   content: string
-  tittle: string
+  title: string
 }) {
   const [isEditing, setIsEditing] = useState(false)
   const [newContent, setNewContent] = useState(content)
@@ -51,7 +51,7 @@ export default function PostCard ({
           )
         : (
         <>
-          <h3 className="text-lg font-semibold mb-2">{tittle}</h3> {/* Mostrar el título con más espacio */}
+          <h3 className="text-lg font-semibold mb-2">{title}</h3> {/* Mostrar el título con más espacio */}
           <SyntaxHighlighter language="typescript" style={atomDark}>
           {newContent}
           </SyntaxHighlighter>

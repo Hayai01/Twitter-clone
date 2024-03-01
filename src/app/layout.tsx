@@ -2,6 +2,15 @@ import type { Metadata } from 'next'
 
 import './globals.css'
 import { Providers } from './providers'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
+import { AuthButtonServer } from './components/auth-button-server'
+import { redirect } from 'next/navigation'
+import { PostLists } from './components/post-list'
+import { type Database } from './types/database'
+import { ComposePost } from './components/compose-post'
+import Sidebar from './components/sidebar'
+import { SearchBar } from './components/searchbar'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +26,18 @@ export default function RootLayout ({
     <html lang="en" className='dark'>
       <body>
         <Providers>
-          {children}
+          <main className="flex min-h-screen">
+          <div className="w-1/4 flex justify-end">
+            <Sidebar />
+              </div>
+               {children}
+            <div className="w-1/4  justify-start max-h-[50px] mt-10 mr-20">
+            <SearchBar />
+            <div className='w-100% mt-10 flex justify-center'>
+              <AuthButtonServer />
+            </div>
+          </div>
+          </main>
         </Providers>
       </body>
     </html>

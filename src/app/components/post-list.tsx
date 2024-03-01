@@ -9,7 +9,7 @@ export function PostLists ({ posts }: { posts: Post[] | null }) {
           id,
           user,
           content,
-          tittle // Incluir el título del post
+          title // Incluir el título del post
         } = post
 
         const {
@@ -26,7 +26,7 @@ export function PostLists ({ posts }: { posts: Post[] | null }) {
             userName={userName}
             avatarUrl={avatarUrl}
             content={content}
-            tittle={tittle} // Pasar el título como prop al PostCard
+            title={title} // Pasar el título como prop al PostCard
           />
         )
       })}

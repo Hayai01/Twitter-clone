@@ -10,5 +10,5 @@ export async function searchPosts (searchQuery: string) {
   if (posts === null) return
 
   // Filtrar los posts según la búsqueda
-  return posts.filter(post => post.tittle.toLowerCase().includes(searchQuery))
+  return posts.filter(post => post.title.toLowerCase().includes(searchQuery))
 }
