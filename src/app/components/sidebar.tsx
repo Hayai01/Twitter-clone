@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-import { IconHome, IconSearch, IconUser, IconSettings } from '@tabler/icons-react'
+import { IconHome, IconSearch, IconUser, IconBrandGithubFilled } from '@tabler/icons-react'
 
 export default function Sidebar () {
   // Define el estado para controlar el ítem de la barra lateral activo
@@ -10,13 +10,11 @@ export default function Sidebar () {
   return (
     <div className="sidebar fixed  ">
       {/* Icono de la web */}
-      <div className="sidebar-icon">
-        <Link href="/">
-          <div>
-            <img src="/icono-web.png" alt="Icono de la web" />
-          </div>
-        </Link>
-      </div>
+      <div className="sidebar-icon flex justify-center">
+  <Link href="/">
+    <IconBrandGithubFilled className='h-16 w-16 mt-10'/>
+  </Link>
+</div>
       {/* Ítems de la barra lateral */}
       <div className="sidebar-items mt-10">
         <Link href="/" passHref>
@@ -40,14 +38,6 @@ export default function Sidebar () {
             <div className="flex items-center">
               <IconUser className="mr-3" />
               <span className="text-white text-2xl font-semibold block py-4">Profile</span>
-            </div>
-          </div>
-        </Link>
-        <Link href="/settings" passHref>
-          <div className={`sidebar-item ${activeItem === 'settings' ? 'bg-gray-600 bg-opacity-30' : ''}`} onClick={() => { setActiveItem('settings') }}>
-            <div className="flex items-center">
-              <IconSettings className="mr-3" />
-              <span className="text-white text-2xl font-semibold block py-4">Settings</span>
             </div>
           </div>
         </Link>

@@ -1,7 +1,7 @@
 import PostCard from './post-card'
 import { type Post } from '@/app/types/posts'
 
-export function PostLists ({ posts }: { posts: Post[] | null }) {
+export function PostLists ({ posts }: { posts: Post[] }) {
   return (
     <>
       {posts?.map(post => {
@@ -26,7 +26,7 @@ export function PostLists ({ posts }: { posts: Post[] | null }) {
             userName={userName}
             avatarUrl={avatarUrl}
             content={content}
-            title={title} // Pasar el título como prop al PostCard
+            title={title}
           />
         )
       })}
